@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package taskPackage;
+
+service TaskService {
+  rpc getAllTasks(voidNoParam) returns (taskItems);
+  rpc createTask(taskItem) returns (taskItem);
+  rpc getTask(taskId) returns (taskItem);
+  rpc updateTask(taskItem) returns (taskItem);
+  rpc deleteTask(taskId) returns (taskItem);
+}
+
+message voidNoParam {}
+
+message taskItem {
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  bool completed = 4;
+}
+
+message taskItems {
+  repeated taskItem items = 1;
+}
+
+message taskId {
+  int32 id = 1;
+}
